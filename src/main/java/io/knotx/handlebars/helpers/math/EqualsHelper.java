@@ -17,12 +17,10 @@ package io.knotx.handlebars.helpers.math;
 
 import com.github.jknack.handlebars.Options;
 import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
-
 import java.io.IOException;
 
 /**
- * Checks if value1 and value2 are equal.<br>
- * Usage:
+ * Checks if value1 and value2 are equal.<br> Usage:
  * <pre>
  *     {{#eq value1 value2}}
  *         equal
@@ -31,7 +29,7 @@ import java.io.IOException;
  *     {{/eq}}
  * </pre>
  */
-public class EqualsHelper implements CustomHandlebarsHelper<Integer> {
+public class EqualsHelper implements CustomHandlebarsHelper<Number> {
 
   @Override
   public String getName() {
@@ -39,8 +37,8 @@ public class EqualsHelper implements CustomHandlebarsHelper<Integer> {
   }
 
   @Override
-  public Object apply(Integer firstParam, Options options) throws IOException {
-    Integer secondParam = options.param(0);
-    return firstParam == secondParam ? options.fn() : options.inverse();
+  public Object apply(Number firstParam, Options options) throws IOException {
+    Number secondParam = options.param(0);
+    return firstParam.equals(secondParam) ? options.fn() : options.inverse();
   }
 }

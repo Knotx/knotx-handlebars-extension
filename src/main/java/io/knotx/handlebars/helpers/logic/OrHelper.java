@@ -22,7 +22,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
- * Checks if any value is not empty.<br>
+ * Checks if any value is not 'falsy' (if it is false, null or empty list/array).<br>
  * Usage:
  * <pre>
  *     {{#or value1 value2 ... }}

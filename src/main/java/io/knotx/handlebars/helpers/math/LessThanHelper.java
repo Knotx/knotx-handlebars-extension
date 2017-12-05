@@ -17,12 +17,10 @@ package io.knotx.handlebars.helpers.math;
 
 import com.github.jknack.handlebars.Options;
 import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
-
 import java.io.IOException;
 
 /**
- * Checks if value1 is smaller than value2.<br>
- * Usage:
+ * Checks if value1 is smaller than value2.<br> Usage:
  * <pre>
  *     {{#lt value1 value2}}
  *          smaller
@@ -31,15 +29,16 @@ import java.io.IOException;
  *     {{/lt}}
  * </pre>
  */
-public class LessThanHelper implements CustomHandlebarsHelper<Integer> {
+public class LessThanHelper<T extends Number & Comparable<T>> implements CustomHandlebarsHelper<T> {
+
   @Override
   public String getName() {
     return "lt";
   }
 
   @Override
-  public Object apply(Integer firstParam, Options options) throws IOException {
-    int secondParam = options.param(0);
-    return firstParam < secondParam ? options.fn() : options.inverse();
+  public Object apply(T firstParam, Options options) throws IOException {
+    T secondParam = options.param(0);
+    return firstParam.compareTo(secondParam) < 0 ? options.fn() : options.inverse();
   }
 }

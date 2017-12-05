@@ -32,7 +32,7 @@ import java.io.IOException;
  *     {{/gt}}
  * </pre>
  */
-public class GreatherThanHelper<T extends Number & Comparable<T>> implements CustomHandlebarsHelper<T> {
+public class GreaterThanHelper<T extends Number & Comparable<T>> implements CustomHandlebarsHelper<T> {
     @Override
     public String getName() {
         return "gt";

@@ -18,6 +18,8 @@ package io.knotx.handlebars.helpers.math;
 import com.github.jknack.handlebars.Options;
 import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
 import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Checks if value1 is greater or equal to value2.<br> Usage:
@@ -29,7 +31,9 @@ import java.io.IOException;
  *     {{/ge}}
  * </pre>
  */
-public class GreatherEqualHelper<T extends Number & Comparable<T>> implements CustomHandlebarsHelper<T> {
+public class GreaterEqualHelper<T extends Number & Comparable<T>> implements CustomHandlebarsHelper<T> {
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(GreaterEqualHelper.class);
 
   @Override
   public String getName() {
@@ -39,6 +43,7 @@ public class GreatherEqualHelper<T extends Number & Comparable<T>> implements Cu
   @Override
   public Object apply(T firstParam, Options options) throws IOException {
     T secondParam = options.param(0);
-    return firstParam.compareTo(secondParam) > 0 ? options.fn() : options.inverse();
+    LOGGER.info("compareTo: {} vs {}", firstParam, secondParam);
+    return firstParam.compareTo(secondParam) >= 0 ? options.fn() : options.inverse();
   }
 }
