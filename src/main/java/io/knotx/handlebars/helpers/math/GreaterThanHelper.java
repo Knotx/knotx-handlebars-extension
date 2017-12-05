@@ -17,29 +17,30 @@ package io.knotx.handlebars.helpers.math;
 
 import com.github.jknack.handlebars.Options;
 import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import java.io.IOException;
 
 /**
- * Checks if value1 is greater or equal to value2.<br>
+ * Checks if value1 is greater than value2.<br>
  * Usage:
  * <pre>
- *     {{#ge value1 value2}}
- *         greater or equal
+ *     {{#gt value1 value2}}
+ *         greater
  *     {{else}}
- *         less
- *     {{/ge}}
+ *         equal or less
+ *     {{/gt}}
  * </pre>
  */
-public class GreatherEqualHelper implements CustomHandlebarsHelper<Integer> {
-  @Override
-  public String getName() {
-    return "ge";
-  }
+public class GreatherThanHelper<T extends Number & Comparable<T>> implements CustomHandlebarsHelper<T> {
+    @Override
+    public String getName() {
+        return "gt";
+    }
 
-  @Override
-  public Object apply(Integer firstParam, Options options) throws IOException {
-    Integer secondParam = options.param(0);
-    return firstParam >= secondParam ? options.fn() : options.inverse();
-  }
+    @Override
+    public Object apply(T firstParam, Options options) throws IOException {
+        T secondParam = options.param(0);
+        return firstParam.compareTo(secondParam) > 0 ? options.fn() : options.inverse();
+    }
 }
