@@ -23,12 +23,11 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Decodes given value.<br>
+ * Decodes given value as in {@see http://docs.oracle.com/javase/7/docs/api/java/net/URLDecoder.html}<br>
  * Usage:
  * <pre>
  *     {{decode_uri value}}
  * </pre>
- * If value is "http%3A%2F%2Fexample.com", the output will be "http://example.com"
  */
 public class DecodeHelper implements CustomHandlebarsHelper<Object> {
   @Override

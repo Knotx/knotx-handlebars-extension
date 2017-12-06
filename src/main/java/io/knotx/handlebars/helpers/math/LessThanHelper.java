@@ -23,7 +23,7 @@ import java.io.IOException;
  * Checks if value1 is smaller than value2.<br> Usage:
  * <pre>
  *     {{#lt value1 value2}}
- *          smaller
+ *          less
  *     {{else}}
  *         greater or equal
  *     {{/lt}}
