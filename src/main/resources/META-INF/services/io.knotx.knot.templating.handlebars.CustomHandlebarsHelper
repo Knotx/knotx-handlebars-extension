@@ -17,10 +17,10 @@ io.knotx.handlebars.helpers.logic.AndHelper
 io.knotx.handlebars.helpers.logic.OrHelper
 
 #equality and relational helpers
-io.knotx.handlebars.helpers.math.GreatherThanHelper
+io.knotx.handlebars.helpers.math.GreaterThanHelper
 io.knotx.handlebars.helpers.math.LessThanHelper
 io.knotx.handlebars.helpers.math.EqualsHelper
-io.knotx.handlebars.helpers.math.GreatherEqualHelper
+io.knotx.handlebars.helpers.math.GreaterEqualHelper
 io.knotx.handlebars.helpers.math.LessEqualHelper
 
 #iterables helpers

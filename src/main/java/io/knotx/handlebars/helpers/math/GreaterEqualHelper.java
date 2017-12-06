@@ -17,30 +17,33 @@ package io.knotx.handlebars.helpers.math;
 
 import com.github.jknack.handlebars.Options;
 import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
-import org.apache.commons.lang3.math.NumberUtils;
-
 import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Checks if value1 is greater than value2.<br>
- * Usage:
+ * Checks if value1 is greater or equal to value2.<br> Usage:
  * <pre>
- *     {{#gt value1 value2}}
- *         greater
+ *     {{#ge value1 value2}}
+ *         greater or equal
  *     {{else}}
- *         equal or less
- *     {{/gt}}
+ *         less
+ *     {{/ge}}
  * </pre>
  */
-public class GreatherThanHelper implements CustomHandlebarsHelper<Integer> {
-    @Override
-    public String getName() {
-        return "gt";
-    }
+public class GreaterEqualHelper<T extends Number & Comparable<T>> implements CustomHandlebarsHelper<T> {
 
-    @Override
-    public Object apply(Integer firstParam, Options options) throws IOException {
-        Integer secondParam = options.param(0);
-        return firstParam > secondParam ? options.fn() : options.inverse();
-    }
+  private static final Logger LOGGER = LoggerFactory.getLogger(GreaterEqualHelper.class);
+
+  @Override
+  public String getName() {
+    return "ge";
+  }
+
+  @Override
+  public Object apply(T firstParam, Options options) throws IOException {
+    T secondParam = options.param(0);
+    LOGGER.info("compareTo: {} vs {}", firstParam, secondParam);
+    return firstParam.compareTo(secondParam) >= 0 ? options.fn() : options.inverse();
+  }
 }

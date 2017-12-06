@@ -32,15 +32,15 @@ import java.io.IOException;
  *     {{/le}}
  * </pre>
  */
-public class LessEqualHelper implements CustomHandlebarsHelper<Integer> {
+public class LessEqualHelper<T extends Number & Comparable<T>> implements CustomHandlebarsHelper<T> {
   @Override
   public String getName() {
     return "le";
   }
 
   @Override
-  public Object apply(Integer firstParam, Options options) throws IOException {
-    int secondParam = options.param(0);
-    return firstParam <= secondParam ? options.fn() : options.inverse();
+  public Object apply(T firstParam, Options options) throws IOException {
+    T secondParam = options.param(0);
+    return firstParam.compareTo(secondParam) <= 0 ? options.fn() : options.inverse();
   }
 }

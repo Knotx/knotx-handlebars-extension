@@ -21,7 +21,7 @@ import io.knotx.handlebars.helpers.ConditionalHelper;
 import java.util.Arrays;
 
 /**
- * Checks if values are not empty.<br>
+ * Checks if all values are not 'falsy' (if it is false, null or empty list/array).<br>
  * Usage:
  * <pre>
  *     {{#and value1 value2 ... }}
