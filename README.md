@@ -24,7 +24,6 @@ Get the n-th element from a json array.
 ```
 ```
 {{element locales 2}} // "en_uk"
-
 ```
 
 ### Conditions checks
@@ -33,52 +32,56 @@ Checks if all values are not 'falsy' (if it is false, null, 0 or empty list/arra
 
 **Usage**
 ```
- {{#and value1 value2 ... }}
-    all values not empty
- {{else}}
-    some or all values empty
- {{/and}}
+{{#and value1 value2 ... }}
+  all values not empty
+{{else}}
+  some or all values empty
+{{/and}}
 ```
 
 **Example**
 ```
 {
-	"image": {
-		"imageLink": "/content/dam/hmi/hmidam/active/2017/03/23/AER_27337_20170323104036991.tif",
-		"title": "Aeron Image",
-		"id": "AER_27337_20170323104036991",
-		"products": ["Aeron Stool"]
-	}
+  "image": {
+    "imageLink": "/assets/tv-set-1323122.png",
+    "title": "Super TV Set with remote",
+    "id": "1323122",
+    "products": ["Super TV Set", "Remote"]
+  }
 }
 ```
 ```
- {{#and image.id image.products}}
-    {{#each image.products}}
-       <span>{{this}}</span> 
-    {{/each}}
- {{else}}
-    No product for image {{image.title}}
- {{/and}}
+{{#and image.id image.products}}
+  {{#each image.products}}
+     <span>{{this}}</span> 
+  {{/each}}
+{{else}}
+  No product for image {{image.title}}
+{{/and}}
 
 ```
-
+Output: 
+```
+<span>Super TV Set</span>
+<span>Remote</span>
+```
 
 #### OR
-Checks if any value is not 'falsy' (if it is false, null, 0 or empty list/array).
+Checks if any value is not 'falsy' (if it is `false`, `null`, `0` or empty list/array).
 
 **Usage**
 ```
- {{#or value1 value2 ... }}
-    some value not empty
- {{else}}
-    all values empty
- {{/or}}
+{{#or value1 value2 ... }}
+  some value not empty
+{{else}}
+  all values empty
+{{/or}}
 ```
 
 
 ### Math helpers
 #### EqualHelper
-Checks if value1 and value2 are equal.
+Checks if `value1` and `value2` are equal.
 
 **Usage**
 ```
@@ -109,7 +112,7 @@ Output: `not equal`
 
 
 #### GreaterEqualHelper
-Checks if value1 is greater or equal to value2.
+Checks if `value1` is greater or equal to `value2`.
 
 **Usage**
 ```
@@ -146,7 +149,7 @@ Output: `less`
 Output: `greater or equal`
 
 #### GreaterThanHelper
-Checks if value1 is greater than value2.
+Checks if `value1` is greater than `value2`.
 **Usage**
 ```
 {{#gt value1 value2}}
@@ -173,7 +176,7 @@ Checks if value1 is greater than value2.
 Output: `less or equal`
 
 #### LessEqualHelper
-Checks if value1 is smaller or equal to value2.
+Checks if `value1` is smaller or equal to `value2`.
 **Usage**
 ```
  {{#le value1 value2}}
@@ -199,7 +202,7 @@ Checks if value1 is smaller or equal to value2.
 Output: `less or equal`
 
 #### LessThanHelper
-Checks if value1 is smaller than value2.
+Checks if `value1` is smaller than `value2`.
 
 **Usage**
 ```
@@ -227,7 +230,7 @@ Output: `less`
 
 ### Uri helpers
 #### DecodeHelper
-Decodes given value as in  [https://docs.oracle.com/javase/7/docs/api/java/net/URLDecoder.html]
+Decodes given value as in [URLDecoder](https://docs.oracle.com/javase/7/docs/api/java/net/URLDecoder.html)
 
 **Usage**
 ```
@@ -237,11 +240,13 @@ Decodes given value as in  [https://docs.oracle.com/javase/7/docs/api/java/net/U
 **Examples**
 ```
 {
-  "_result": {"pageUrl":"/images/?image&#x3D;Nelson-Ball-Crisscross-Pendant2&amp;id&#x3D;xyz&#x3D;&#x3D"}
+  "imageData": {
+    "pageUrl":"/images/?image&#x3D;Some-Image-Name&amp;id&#x3D;xyz&#x3D;&#x3D"
+  }
 }
 ```
 ```
-<link rel="canonical" href="{{decode_uri _result.pageUrl}}" />
+<link rel="canonical" href="{{decode_uri imageData.pageUrl}}" />
 ```
 
-Output: `<link rel="canonical" href="/images/?image=Nelson-Ball-Crisscross-Pendant2&id=xyz%3D%3D">`
+Output: `<link rel="canonical" href="/images/?image=Some-Image-Name&id=xyz%3D%3D">`
