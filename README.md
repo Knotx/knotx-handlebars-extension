@@ -230,7 +230,8 @@ Output: `less`
 
 ### Uri helpers
 #### DecodeHelper
-Decodes given value as in [URLDecoder](https://docs.oracle.com/javase/7/docs/api/java/net/URLDecoder.html)
+Decodes given value as in [URLDecoder decode method](https://docs.oracle.com/javase/8/docs/api/java/net/URLDecoder.html#decode-java.lang.String-java.lang.String-) 
+with `UTF-8` encoding.
 
 **Usage**
 ```
