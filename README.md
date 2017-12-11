@@ -8,6 +8,19 @@ To use extensions simply add `knotx-handlebars-extension-x.y.z.jar` to classpath
 
 ## Helpers
 
+- [ElementHelper](#elementhelper)
+- [Conditions checks](#conditions-checks)
+  - [AND](#and)
+  - [OR](#or)
+- [Math helpers](#math-helpers)
+  - [EqualHelper](#equalhelper)
+  - [GreaterEqualHelper](#greaterequalhelper)
+  - [GreaterThanHelper](#greaterthanhelper)
+  - [LessEqualHelper](#lessequalhelper)
+  - [LessThanHelper](#lessthanhelper)
+- [Uri helpers](#uri-helpers)
+  - [DecodeHelper](#decodehelper)
+
 ### ElementHelper
 Get the n-th element from a json array.
 
