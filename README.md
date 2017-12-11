@@ -23,8 +23,10 @@ Get the n-th element from a json array.
 }
 ```
 ```
-{{element locales 2}} // "en_uk"
+{{element locales 2}}
 ```
+Output: `en_uk`
+
 
 ### Conditions checks
 #### AND
