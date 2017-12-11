@@ -80,6 +80,32 @@ Checks if any value is not 'falsy' (if it is `false`, `null`, `0` or empty list/
 {{/or}}
 ```
 
+**Example**
+```
+{
+  "product": {
+    "imageLink": "/assets/tv-set-1323122.png",
+    "name": "Super TV",
+    "technicalDescription": "OLED, 4K, WiFi",
+    "producerDescription": "",
+    "parts": ["Super TV Set", "Remote"]
+  }
+}
+```
+```
+{{#or product.technicalDescription product.producerDescription}}
+     <span>{{product.technicalDescription}}</span> 
+     <span>{{product.producerDescription}}</span> 
+{{else}}
+  This product has no description.
+{{/or}}
+
+```
+Output: 
+```
+<span>OLED, 4K, WiFi</span>
+<span></span>
+```
 
 ### Math helpers
 #### EqualHelper
@@ -232,7 +258,7 @@ Output: `less`
 
 ### Uri helpers
 #### DecodeHelper
-Decodes given value as in [URLDecoder decode method](https://docs.oracle.com/javase/8/docs/api/java/net/URLDecoder.html#decode-java.lang.String-java.lang.String-) 
+Decodes given value as in [`URLDecoder.decode` method](https://docs.oracle.com/javase/8/docs/api/java/net/URLDecoder.html#decode-java.lang.String-java.lang.String-) 
 with `UTF-8` encoding.
 
 **Usage**
