@@ -1,5 +1,5 @@
 # knotx-handlebars-extension
-Custom Knot.x Handlebars Helpers
+Custom Knot.x [Handlebars](http://handlebarsjs.com/) Helpers. 
 
 To build run:
 * `mvn clean package`
