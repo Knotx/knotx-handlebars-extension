@@ -1,4 +1,3 @@
-
 /*
  * Copyright (C) 2016 Cognifide Limited
  *
@@ -18,7 +17,6 @@ package io.knotx.handlebars.helpers.math;
 
 import com.github.jknack.handlebars.Options;
 import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
-
 import java.io.IOException;
 
 /**
