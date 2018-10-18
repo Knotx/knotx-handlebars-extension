@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Cognifide Limited
+ * Copyright (C) 2018 Cognifide Limited
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 package io.knotx.handlebars.helpers.math;
 
 import com.github.jknack.handlebars.Options;
-import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
+import io.vertx.core.logging.Logger;
+import io.vertx.core.logging.LoggerFactory;
 import java.io.IOException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Checks if value1 is greater or equal to value2.<br> Usage:
@@ -31,7 +30,7 @@ import org.slf4j.LoggerFactory;
  *     {{/ge}}
  * </pre>
  */
-public class GreaterEqualHelper<T extends Number & Comparable<T>> implements CustomHandlebarsHelper<T> {
+public class GreaterEqualHelper<T extends Comparable<T>> extends CompareHelper<T> {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(GreaterEqualHelper.class);
 
@@ -42,8 +41,6 @@ public class GreaterEqualHelper<T extends Number & Comparable<T>> implements Cus
 
   @Override
   public Object apply(T firstParam, Options options) throws IOException {
-    T secondParam = options.param(0);
-    LOGGER.info("compareTo: {} vs {}", firstParam, secondParam);
-    return firstParam.compareTo(secondParam) >= 0 ? options.fn() : options.inverse();
+    return super.apply(firstParam, options, LOGGER, i -> i >= 0);
   }
 }

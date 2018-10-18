@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Cognifide Limited
+ * Copyright (C) 2018 Cognifide Limited
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,7 @@ package io.knotx.handlebars.helpers.arrays;
 import com.github.jknack.handlebars.Options;
 import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
 import io.vertx.core.json.JsonArray;
-
 import java.io.IOException;
-
 
 /**
  * Get i-th element of json array.<br> Usage:
@@ -28,7 +26,7 @@ import java.io.IOException;
  *     {{element array i}}
  * </pre>
  */
-public class ElementHelper implements CustomHandlebarsHelper {
+public class ElementHelper implements CustomHandlebarsHelper<Object> {
 
   @Override
   public String getName() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Cognifide Limited
+ * Copyright (C) 2018 Cognifide Limited
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,8 @@
 package io.knotx.handlebars.helpers.math;
 
 import com.github.jknack.handlebars.Options;
-import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
+import io.vertx.core.logging.Logger;
+import io.vertx.core.logging.LoggerFactory;
 import java.io.IOException;
 
 /**
@@ -29,7 +30,9 @@ import java.io.IOException;
  *     {{/lt}}
  * </pre>
  */
-public class LessThanHelper<T extends Number & Comparable<T>> implements CustomHandlebarsHelper<T> {
+public class LessThanHelper<T extends Comparable<T>> extends CompareHelper<T> {
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(LessThanHelper.class);
 
   @Override
   public String getName() {
@@ -38,7 +41,6 @@ public class LessThanHelper<T extends Number & Comparable<T>> implements CustomH
 
   @Override
   public Object apply(T firstParam, Options options) throws IOException {
-    T secondParam = options.param(0);
-    return firstParam.compareTo(secondParam) < 0 ? options.fn() : options.inverse();
+    return super.apply(firstParam, options, LOGGER, i -> i < 0);
   }
 }
