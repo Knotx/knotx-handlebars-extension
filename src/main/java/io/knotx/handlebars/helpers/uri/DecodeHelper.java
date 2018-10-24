@@ -23,9 +23,9 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Decodes given value as in {@see http://docs.oracle.com/javase/7/docs/api/java/net/URLDecoder.html}<br>
+ * Decodes given value as in http://docs.oracle.com/javase/7/docs/api/java/net/URLDecoder.html<br>
  * Usage:
- * <pre>
+ * <pre>url
  *     {{decode_uri value}}
  * </pre>
  */

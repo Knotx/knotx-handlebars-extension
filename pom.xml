@@ -66,6 +66,8 @@
     <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
     <maven.nexus.staging.plugin.version>1.6.7</maven.nexus.staging.plugin.version>
     <maven.source.plugin.version>3.0.1</maven.source.plugin.version>
+    <maven.javadoc.plugin.version>3.0.1</maven.javadoc.plugin.version>
+    <maven.gpg.plugin.version>1.5</maven.gpg.plugin.version>
   </properties>
 
   <dependencyManagement>
@@ -127,6 +129,19 @@
               <id>attach-sources</id>
               <goals>
                 <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${maven.javadoc.plugin.version}</version>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
               </goals>
             </execution>
           </executions>
