@@ -26,6 +26,38 @@
   <version>1.0.0</version>
 
   <name>Knot.x Additional Helpers For Handlebars</name>
+  <description>Knot.x Additional Helpers For Handlebars</description>
+  <url>http://knotx.io</url>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Tomasz Michalak</name>
+      <url>https://github.com/tomaszmichalak</url>
+    </developer>
+    <developer>
+      <name>Maciej Laskowski</name>
+      <url>https://github.com/Skejven</url>
+    </developer>
+    <developer>
+      <name>Marcin Czeczko</name>
+      <url>https://github.com/marcinczeczko</url>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/Knotx/knotx-handlebars-extension.git</connection>
+    <developerConnection>scm:git:ssh://github.com:Knotx/knotx-handlebars-extension.git</developerConnection>
+    <url>http://github.com/Knotx/knotx-handlebars-extension/tree/master</url>
+    <tag>HEAD</tag>
+  </scm>
 
   <repositories>
     <repository>
