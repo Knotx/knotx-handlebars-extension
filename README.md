@@ -18,6 +18,9 @@ To use extensions simply add `knotx-handlebars-extension-x.y.z.jar` to classpath
   - [GreaterThanHelper](#greaterthanhelper)
   - [LessEqualHelper](#lessequalhelper)
   - [LessThanHelper](#lessthanhelper)
+- [Regex helpers](#regex-helpers)
+  - [EachSplitHelper](#eachsplithelper)
+  - [MatchHelper](#matchhelper)
 - [Uri helpers](#uri-helpers)
   - [DecodeHelper](#decodehelper)
 
@@ -268,6 +271,63 @@ Checks if `value1` is smaller than `value2`.
 {{/lt}}
 ```
 Output: `less`
+
+### Regex helpers
+#### EachSplitHelper
+Splits a value using regex delimiter, and iterates over the result.
+
+**Usage**
+```
+   {{each-split value delimiter_pattern}}
+```
+
+**Examples**
+```
+{
+  "someString":"value1,value2,value3"
+}
+```
+```
+{{#each-split someString "\,"}}
+  <td>{{this}}</td>
+{{/each-split}}
+```
+
+Output:
+```
+  <td>value1</td>
+  <td>value2</td>
+  <td>value3</td>
+```
+
+#### MatchHelper
+Finds a matching string using [`Matcher.find` method](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Matcher.html#find-int-).
+
+**Usage**
+```
+   {{match value pattern [index] [group]}}
+```
+
+**Examples**
+```
+{
+  "someString":"value1,value2,value3"
+}
+```
+```
+{{#match someString "[a-z]+[0-9]"}}
+```
+Output: `value1`
+
+```
+{{#match someString "[a-z]+[0-9]" 2}}
+```
+Output: `value3`
+
+```
+{{#match someString "[a-z]+([0-9])" 1 1}}
+```
+Output: `2`
 
 ### Uri helpers
 #### DecodeHelper
