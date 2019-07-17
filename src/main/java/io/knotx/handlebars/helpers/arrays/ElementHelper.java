@@ -16,7 +16,7 @@
 package io.knotx.handlebars.helpers.arrays;
 
 import com.github.jknack.handlebars.Options;
-import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
+import io.knotx.te.handlebars.CustomHandlebarsHelper;
 import io.vertx.core.json.JsonArray;
 import java.io.IOException;
 

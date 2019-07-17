@@ -14,7 +14,7 @@
 package io.knotx.handlebars.helpers.math;
 
 import com.github.jknack.handlebars.Options;
-import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
+import io.knotx.te.handlebars.CustomHandlebarsHelper;
 import io.vertx.core.logging.Logger;
 import java.io.IOException;
 import java.util.function.Predicate;
