@@ -153,8 +153,6 @@ Checks if `value1` and `value2` are equal.
 ```
 Output: `not equal`
 
-
-
 #### GreaterEqualHelper
 Checks if `value1` is greater or equal to `value2`.
 
@@ -352,3 +350,51 @@ with `UTF-8` encoding.
 ```
 
 Output: `<link rel="canonical" href="/images/?image=Some-Image-Name&id=xyz%3D%3D">`
+
+#### EncodeHelper
+Encodes given value as in [`URLEncoder.encode` method](https://docs.oracle.com/javase/8/docs/api/java/net/URLEncoder.html#encode-java.lang.String-java.lang.String-) 
+with `UTF-8` encoding.
+
+**Usage**
+```
+   {{encode_uri value}}
+```
+
+**Examples**
+```
+{
+  "field": "ex@mple string"
+}
+```
+```
+{{encode_uri field}}
+```
+
+Output: `ex%40mple+string`
+
+### String helpers
+#### StringEqualsHelper
+Checks if current value and given parameter are equal as Strings.
+
+**Usage**
+```
+{{#string_equals value "parameter"}}
+  equal
+{{else}}
+  not equal
+{{/string_equals}}
+```
+**Examples**
+```
+response : {
+  "statusCode": "302"
+}
+```
+```
+{{#string_equals response.statusCode "200"}}
+  equal
+{{else}}
+  not equal
+{{/string_equals}}
+```
+Output: `not equal`
