@@ -23,7 +23,7 @@
 
   <groupId>io.knotx</groupId>
   <artifactId>knotx-handlebars-extension</artifactId>
-  <version>1.5.0-SNAPSHOT</version>
+  <version>1.5.1-SNAPSHOT</version>
 
   <name>Knot.x Additional Helpers For Handlebars</name>
   <description>Knot.x Additional Helpers For Handlebars</description>
