@@ -27,8 +27,12 @@ io.knotx.handlebars.helpers.math.LessEqualHelper
 io.knotx.handlebars.helpers.arrays.ElementHelper
 
 #encoding
-io.knotx.handlebars.helpers.uri.DecodeHelper
+io.knotx.handlebars.helpers.uri.DecodeUriHelper
+io.knotx.handlebars.helpers.uri.EncodeUriHelper
 
 #regex
 io.knotx.handlebars.helpers.regex.EachSplitHelper
 io.knotx.handlebars.helpers.regex.MatchHelper
+
+#string
+io.knotx.handlebars.helpers.string.StringEqualsHelper

@@ -15,7 +15,7 @@ package io.knotx.handlebars.helpers.regex;
 
 import com.github.jknack.handlebars.Options;
 import com.github.jknack.handlebars.helper.EachHelper;
-import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
+import io.knotx.te.handlebars.CustomHandlebarsHelper;
 import java.io.IOException;
 import java.util.Arrays;
 

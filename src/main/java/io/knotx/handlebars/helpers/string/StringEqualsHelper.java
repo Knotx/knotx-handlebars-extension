@@ -13,40 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.knotx.handlebars.helpers.math;
+package io.knotx.handlebars.helpers.string;
 
 import com.github.jknack.handlebars.Options;
 import io.knotx.te.handlebars.CustomHandlebarsHelper;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
 import java.io.IOException;
+import org.apache.commons.lang3.StringUtils;
 
 /**
- * Checks if value1 and value2 are equal.<br> Usage:
+ * Checks if current value and given parameter are equal as Strings.<br> Usage:
  * <pre>
- *     {{#eq value1 value2}}
+ *     {{#string_equals value "parameter"}}
  *         equal
  *     {{else}}
  *         not equal
- *     {{/eq}}
+ *     {{/string_equals}}
  * </pre>
+ * If value is "parameter", the output will be "equal".
  */
-public class EqualsHelper implements CustomHandlebarsHelper<Object> {
-
-  private static final Logger LOGGER = LoggerFactory.getLogger(EqualsHelper.class);
+public class StringEqualsHelper implements CustomHandlebarsHelper<Object> {
 
   @Override
   public String getName() {
-    return "eq";
+    return "string_equals";
   }
 
   @Override
-  public Object apply(Object firstParam, Options options) throws IOException {
-    Object secondParam = options.param(0);
-    LOGGER.debug("compareTo: {} vs {}", firstParam, secondParam);
-    if (firstParam == null) {
-      return options.inverse();
+  public CharSequence apply(Object value, Options options) throws IOException {
+    Options.Buffer buffer = options.buffer();
+    if (StringUtils.equals(String.valueOf(value), options.param(0, StringUtils.EMPTY))) {
+      buffer.append(options.fn());
+    } else {
+      buffer.append(options.inverse());
     }
-    return firstParam.equals(secondParam) ? options.fn() : options.inverse();
+    return buffer;
   }
 }

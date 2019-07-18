@@ -13,40 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.knotx.handlebars.helpers.math;
+package io.knotx.handlebars.helpers.uri;
 
 import com.github.jknack.handlebars.Options;
 import io.knotx.te.handlebars.CustomHandlebarsHelper;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 /**
- * Checks if value1 and value2 are equal.<br> Usage:
+ * Encodes given value.<br> Usage:
  * <pre>
- *     {{#eq value1 value2}}
- *         equal
- *     {{else}}
- *         not equal
- *     {{/eq}}
+ *     {{encode_uri value}}
  * </pre>
+ * If value is "ex@mple string", the output will be "ex%40mple+string"
  */
-public class EqualsHelper implements CustomHandlebarsHelper<Object> {
-
-  private static final Logger LOGGER = LoggerFactory.getLogger(EqualsHelper.class);
+public class EncodeUriHelper implements CustomHandlebarsHelper<Object> {
 
   @Override
   public String getName() {
-    return "eq";
+    return "encode_uri";
   }
 
   @Override
-  public Object apply(Object firstParam, Options options) throws IOException {
-    Object secondParam = options.param(0);
-    LOGGER.debug("compareTo: {} vs {}", firstParam, secondParam);
-    if (firstParam == null) {
-      return options.inverse();
-    }
-    return firstParam.equals(secondParam) ? options.fn() : options.inverse();
+  public CharSequence apply(Object value, Options options) throws IOException {
+    Options.Buffer buffer = options.buffer();
+    buffer.append(URLEncoder.encode(String.valueOf(value), StandardCharsets.UTF_8.name()));
+    return buffer;
   }
 }

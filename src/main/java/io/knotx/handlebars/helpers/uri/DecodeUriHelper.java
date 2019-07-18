@@ -16,7 +16,7 @@
 package io.knotx.handlebars.helpers.uri;
 
 import com.github.jknack.handlebars.Options;
-import io.knotx.knot.templating.handlebars.CustomHandlebarsHelper;
+import io.knotx.te.handlebars.CustomHandlebarsHelper;
 
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -29,7 +29,7 @@ import java.nio.charset.StandardCharsets;
  *     {{decode_uri value}}
  * </pre>
  */
-public class DecodeHelper implements CustomHandlebarsHelper<Object> {
+public class DecodeUriHelper implements CustomHandlebarsHelper<Object> {
   @Override
   public String getName() {
     return "decode_uri";
